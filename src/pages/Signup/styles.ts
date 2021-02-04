@@ -1,5 +1,85 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
+
+import signupBackground from '../../assets/signup-background.svg';
+
 
 export const Container = styled.div`
+  height: 100vh;
+
+  display: flex;
+  align-self: stretch;
+`;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 700px;
+  flex: 1;
+
+  img {
+    margin-top: 80px;
+  }
+
+  form {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+
+  }
+
+  a {
+    margin-top: 16px;
+    text-align: center;
+    color: #F4EDE8;
+    text-decoration: none;
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s color;
+    &:hover {
+      color: ${shade(0.3, '#F4EDE8')};
+    }
+
+    svg {
+      margin-right: 8px;      
+    }
+  }
+
+  > a {    
+    margin-top: 16px;
+    color: #FF9000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 8px;
+    }
+
+    transition: 0.2s color;
+    &:hover {
+      color: ${shade(0.3, '#FF9900')};
+    }
+  }
   
+`;
+export const BackgroundImage = styled.div`
+  display: flex;
+  background-image: url(${signupBackground});
+  flex: 1;
+  object-fit: cover;
+
 `;
