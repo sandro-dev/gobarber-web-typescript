@@ -9,14 +9,20 @@ export default createGlobalStyle`
     }
 
     body {
-      font-family: 'Roboto Slab', sans-serif;
+      font-family: Roboto Slab, sans-serif;
+      font-weight: 500;
       font-size: 16px;
+
       background: #3d3d4d;
       color: #fff;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    input { border: 0; }
+
+    h1, h2, h3, h4, h5, h6, button {
+      font-family: Roboto Slab, sans-serif;
       font-weight: 500;
+      font-size: 16px;
     }
     
     button {
