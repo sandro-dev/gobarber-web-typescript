@@ -31,43 +31,13 @@ export const Content = styled.div`
       font-size: 24px;
     }
 
-    input {
-      background: #232129;
-      width: 340px;
-      height: 56px;
-      padding: 0 16px;
-
-      border-radius: 10px;
-      color: #666360;
-
-      &::placeholder {
-        color: #666360;
-      }
-
-      & + input {
-        margin-top: 8px;
-      }
-    }
-
-    button {
-      width: 340px;
-      height: 56px;
-      background: #FF9000;
-      border-radius: 10px;
-      margin-top: 16px;
-      transition: 0.2s background-color;
-
-      &:hover {
-        background: ${shade(0.3, '#FF9900')};
-      }
-    }
-
   }
 
-  > button {
+  a {
     margin-top: 16px;
     text-align: center;
     color: #F4EDE8;
+    text-decoration: none;
     background: transparent;
     transition: 0.2s color;
     &:hover {
