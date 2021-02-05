@@ -5,7 +5,6 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
 import logoImg from '../../assets/logo-gobarber.svg';
-import signinBackground from '../../assets/signin-background.svg';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -43,9 +42,7 @@ const Signin: React.FC = () => {
 
       </Content>
 
-      <BackgroundImage>
-        <img src={signinBackground} alt="Background"/>
-      </BackgroundImage>
+      <BackgroundImage />
 
     </Container>
   );

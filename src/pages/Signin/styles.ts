@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
+import signinBackground from '../../assets/signin-background.svg';
+
 export const Container = styled.div`
   height: 100vh;
 
@@ -66,9 +68,7 @@ export const Content = styled.div`
 `;
 export const BackgroundImage = styled.div`
   display: flex;
-
-  img {
-    object-fit: cover;
-    flex: 1;
-  }
+  background: url(${signinBackground});
+  flex: 1;
+  object-fit: cover;
 `;
