@@ -5,17 +5,17 @@ import  { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import ToastContainer from './components/ToastContainer';
 
-import { AuthProvider } from './hooks/Auth';
+import AppProvider from './hooks';
 
 const App: React.FC = () => {
   return (
     <>
       <BrowserRouter>
-
-        <AuthProvider>
-          <Routes />
-        </AuthProvider>
         
+        <AppProvider>
+          <Routes />
+        </AppProvider>
+
       </BrowserRouter>
 
       <ToastContainer />
