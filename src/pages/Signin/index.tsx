@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import { FiLogIn, FiLock, FiMail } from 'react-icons/fi';
 import * as Yup from 'yup';
 
-import { useAuth } from '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/Auth';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 

@@ -5,7 +5,7 @@ import  { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import ToastContainer from './components/ToastContainer';
 
-import { AuthProvider } from './hooks/AuthContext';
+import { AuthProvider } from './hooks/Auth';
 
 const App: React.FC = () => {
   return (
