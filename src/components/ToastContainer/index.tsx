@@ -16,7 +16,7 @@ const ToastContainer: React.FC<ToastContainerProps> = ({messages}) => {
   return (
     <Container>
       {messages.map(message => (
-        <Toast type={message.type} hasDescription={!!message.description}>
+        <Toast key={message.id} type={message.type} hasDescription={!!message.description}>
           <FiAlertCircle size={20} />        
             <div>
               <strong>{message.title}</strong>
