@@ -7,11 +7,18 @@ interface Errors {
 
 export default function getValidationErrors(err: ValidationError): Errors {
 
-  const validationErrors: Errors = {};
+  if(err instanceof ValidationError) {
+    const validationErrors: Errors = {};
 
-  err.inner.forEach((error, idx) => {
-    validationErrors[`${error.path}`] = error.message;
-  });
+    err.inner.forEach((error, idx) => {
+      validationErrors[`${error.path}`] = error.message;
+    });
 
-  return validationErrors;
+    return validationErrors;
+  
+  } else {
+    return {serverError:`An error has occurred`};
+  }
+
+  
 }
