@@ -17,7 +17,7 @@ export default function getValidationErrors(err: ValidationError): Errors {
     return validationErrors;
   
   } else {
-    return {serverError:`An error has occurred`};
+    return { error :`Internal Server Error`};
   }
 
   
