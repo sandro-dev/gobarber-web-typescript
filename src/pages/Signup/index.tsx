@@ -12,7 +12,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 import { Container, Content, BackgroundImage } from './styles';
 
-const Signup: React.FC = () => {
+const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(async (data: object) => {
@@ -31,8 +31,6 @@ const Signup: React.FC = () => {
     } catch (err) {
       const errors = getValidationErrors(err);
       formRef.current?.setErrors(errors);
-
-      console.log(errors);
     }
   }, []);
 
@@ -67,4 +65,4 @@ const Signup: React.FC = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
