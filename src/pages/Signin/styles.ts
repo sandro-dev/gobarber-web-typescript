@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 import signinBackground from '../../assets/signin-background.svg';
@@ -16,6 +16,25 @@ export const Content = styled.div`
 
   max-width: 700px;
   flex: 1;
+`;
+
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+export const AnimationContiner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: ${appearFromLeft} 1s;
 
   img {
     margin-top: 80px;
@@ -64,6 +83,7 @@ export const Content = styled.div`
     }
   }
 `;
+
 export const BackgroundImage = styled.div`
   display: flex;
   background: url(${signinBackground});
