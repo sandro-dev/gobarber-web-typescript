@@ -3,7 +3,6 @@ import { shade } from 'polished';
 
 import signupBackground from '../../assets/signup-background.svg';
 
-
 export const Container = styled.div`
   height: 100vh;
 
@@ -33,13 +32,12 @@ export const Content = styled.div`
       margin-bottom: 24px;
       font-size: 24px;
     }
-
   }
 
   a {
     margin-top: 16px;
     text-align: center;
-    color: #F4EDE8;
+    color: #f4ede8;
     text-decoration: none;
     background: transparent;
 
@@ -53,13 +51,13 @@ export const Content = styled.div`
     }
 
     svg {
-      margin-right: 8px;      
+      margin-right: 8px;
     }
   }
 
-  > a {    
+  > a {
     margin-top: 16px;
-    color: #FF9000;
+    color: #ff9000;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -74,12 +72,10 @@ export const Content = styled.div`
       color: ${shade(0.3, '#FF9900')};
     }
   }
-  
 `;
 export const BackgroundImage = styled.div`
   display: flex;
   background-image: url(${signupBackground});
   flex: 1;
   object-fit: cover;
-
 `;

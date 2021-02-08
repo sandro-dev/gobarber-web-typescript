@@ -10,7 +10,7 @@ const toastTypeVariations = {
     background: #ebf8ff;
     color: #3172b7;
   `,
-  
+
   success: css`
     background: #e6fffa;
     color: #2e656a;
@@ -20,8 +20,7 @@ const toastTypeVariations = {
     background: #fddede;
     color: #c53030;
   `,
-
-}
+};
 
 export const Container = styled.div<ContainerProps>`
   width: 360px;
@@ -31,17 +30,16 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 
-  display: flex; 
+  display: flex;
 
-  ${(props) => toastTypeVariations[props.type || 'info'] }
-
+  ${props => toastTypeVariations[props.type || 'info']}
 
   & + div {
     margin-top: 8px;
   }
 
   > svg {
-      margin: 4px 12px 0 0;
+    margin: 4px 12px 0 0;
   }
 
   div {
@@ -66,11 +64,13 @@ export const Container = styled.div<ContainerProps>`
     color: inherit;
   }
 
-  ${props => !props.hasDescription && css`
-    align-items: center;
+  ${props =>
+    !props.hasDescription &&
+    css`
+      align-items: center;
 
-    svg {
-      margin-top: 0;
-    }
-  `}
+      svg {
+        margin-top: 0;
+      }
+    `}
 `;

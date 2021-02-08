@@ -32,13 +32,12 @@ export const Content = styled.div`
       margin-bottom: 24px;
       font-size: 24px;
     }
-
   }
 
   a {
     margin-top: 16px;
     text-align: center;
-    color: #F4EDE8;
+    color: #f4ede8;
     text-decoration: none;
     background: transparent;
     transition: 0.2s color;
@@ -47,9 +46,9 @@ export const Content = styled.div`
     }
   }
 
-  > a {    
+  > a {
     margin-top: 16px;
-    color: #FF9000;
+    color: #ff9000;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -64,7 +63,6 @@ export const Content = styled.div`
       color: ${shade(0.3, '#FF9900')};
     }
   }
-  
 `;
 export const BackgroundImage = styled.div`
   display: flex;

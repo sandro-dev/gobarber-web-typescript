@@ -1,4 +1,3 @@
-import { errorMonitor } from 'events';
 import { ValidationError } from 'yup';
 
 interface Errors {
@@ -6,19 +5,14 @@ interface Errors {
 }
 
 export default function getValidationErrors(err: ValidationError): Errors {
-
-  if(err instanceof ValidationError) {
+  if (err instanceof ValidationError) {
     const validationErrors: Errors = {};
 
-    err.inner.forEach((error, idx) => {
+    err.inner.forEach(error => {
       validationErrors[`${error.path}`] = error.message;
     });
 
     return validationErrors;
-  
-  } else {
-    return { error :`Internal Server Error`};
   }
-
-  
+  return { error: `Internal Server Error` };
 }
