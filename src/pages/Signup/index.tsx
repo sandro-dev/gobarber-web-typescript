@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import { FiLock, FiMail, FiUser, FiArrowLeft } from 'react-icons/fi';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -31,6 +31,7 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { addToast } = useToast();
+  const history = useHistory();
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
@@ -52,6 +53,15 @@ const SignUp: React.FC = () => {
           email: data.email,
           password: data.password,
         });
+
+        addToast({
+          type: 'success',
+          title: 'Cadastro realizado!',
+          description:
+            'Agora você já pode fazer login com os dados cadastrados',
+        });
+
+        history.push('/');
       } catch (err) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
@@ -62,17 +72,9 @@ const SignUp: React.FC = () => {
           description:
             'Ocorreu um erro ao tentar realizar o cadastro, verifique as informações',
         });
-
-        return;
       }
-
-      addToast({
-        type: 'success',
-        title: 'Cadastro realizado',
-        description: 'Cadastro foi realizado com sucesso!',
-      });
     },
-    [addToast],
+    [addToast, history],
   );
 
   return (
