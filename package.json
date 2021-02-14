@@ -44,7 +44,6 @@
       "!src/hooks/index.tsx"
     ]
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
@@ -65,6 +64,7 @@
     "@types/yup": "^0.29.11",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
+    "axios-mock-adapter": "^1.19.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
