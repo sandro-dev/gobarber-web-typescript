@@ -12,7 +12,11 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
 }
