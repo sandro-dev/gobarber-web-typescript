@@ -9,14 +9,17 @@ const apiMock = new MockAdapter(api);
 
 describe('Auth hook', () => {
   it('should be able to sign in', async () => {
-    apiMock.onPost('sessions').reply(200, {
+    const apiResponse = {
       user: {
         id: 'id-123',
         name: 'Sandro Santos',
         email: 'sandro@sandro.dev',
       },
       token: 'token-123',
-    });
+    };
+
+    apiMock.onPost('sessions').reply(200, apiResponse);
+    const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
 
     const { result, waitForNextUpdate } = renderHook(() => useAuth(), {
       wrapper: AuthProvider,
@@ -28,6 +31,39 @@ describe('Auth hook', () => {
     });
 
     await waitForNextUpdate();
+
+    expect(setItemSpy).toHaveBeenCalledWith(
+      '@GoBarber:token',
+      apiResponse.token,
+    );
+
+    expect(setItemSpy).toHaveBeenCalledWith(
+      '@GoBarber:user',
+      JSON.stringify(apiResponse.user),
+    );
+
+    expect(result.current.user.email).toEqual('sandro@sandro.dev');
+  });
+
+  it('should restore saved data from storage when auth inits', async () => {
+    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(key => {
+      switch (key) {
+        case '@GoBarber:token':
+          return 'token-123';
+        case '@GoBarber:user':
+          return JSON.stringify({
+            id: 'id-123',
+            name: 'Sandro Santos',
+            email: 'sandro@sandro.dev',
+          });
+        default:
+          return null;
+      }
+    });
+
+    const { result } = renderHook(() => useAuth(), {
+      wrapper: AuthProvider,
+    });
 
     expect(result.current.user.email).toEqual('sandro@sandro.dev');
   });
