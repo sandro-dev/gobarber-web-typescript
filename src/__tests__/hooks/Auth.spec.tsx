@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import MockAdapter from 'axios-mock-adapter';
+import { act } from 'react-test-renderer';
 import { useAuth, AuthProvider } from '../../hooks/Auth';
 
 import api from '../../services/api';
@@ -66,5 +67,37 @@ describe('Auth hook', () => {
     });
 
     expect(result.current.user.email).toEqual('sandro@sandro.dev');
+  });
+
+  it('should be able to sign out', async () => {
+    const apiResponse = {
+      user: {
+        id: 'id-123',
+        name: 'Sandro Santos',
+        email: 'sandro@sandro.dev',
+      },
+      token: 'token-123',
+    };
+
+    apiMock.onPost('sessions').reply(200, apiResponse);
+
+    const { result, waitForNextUpdate } = renderHook(() => useAuth(), {
+      wrapper: AuthProvider,
+    });
+
+    const removeItemSpy = jest.spyOn(Storage.prototype, 'removeItem');
+
+    result.current.signIn({
+      email: 'sandro@sandro.dev',
+      password: '123456',
+    });
+
+    act(() => {
+      result.current.signOut();
+    });
+
+    await waitForNextUpdate();
+
+    expect(removeItemSpy).toHaveBeenCalledTimes(2);
   });
 });
