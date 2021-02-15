@@ -32,7 +32,7 @@ describe('SignUp Page', () => {
     mockedHistoryPush.mockClear();
   });
 
-  it('should be able to Sign up', async () => {
+  it('should be able to sign up', async () => {
     apiMock.onPost('users').reply(200, {
       name: 'Sandro Santos',
       email: 'sandro@sandro.dev',
@@ -53,5 +53,34 @@ describe('SignUp Page', () => {
     fireEvent.click(buttonElement);
 
     await waitFor(() => expect(mockedHistoryPush).toHaveBeenCalledWith('/'));
+  });
+
+  it('should NOT be able to sign up with invalid data', async () => {
+    apiMock.onPost('users').reply(200, {
+      name: 'Sandro Santos',
+      email: 'not-valid@email',
+      id: 'user-123',
+    });
+
+    const { getByPlaceholderText, getByText } = render(<SignUp />);
+
+    const inputName = getByPlaceholderText('Nome');
+    const inputEmail = getByPlaceholderText('E-mail');
+    const inputPassword = getByPlaceholderText('Senha');
+
+    fireEvent.change(inputName, { target: { value: 'Sandro Santos' } });
+    fireEvent.change(inputEmail, { target: { value: 'not-valid@email' } });
+    fireEvent.change(inputPassword, { target: { value: '123456' } });
+
+    const buttonElement = getByText('Cadastrar');
+    fireEvent.click(buttonElement);
+
+    await waitFor(() =>
+      expect(mockedAddToast).toBeCalledWith(
+        expect.objectContaining({
+          type: 'error',
+        }),
+      ),
+    );
   });
 });
