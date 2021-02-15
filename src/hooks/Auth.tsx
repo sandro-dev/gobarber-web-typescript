@@ -12,11 +12,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
+  user: object;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
 }
@@ -65,10 +61,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
 function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
-
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
 
   return context;
 }
